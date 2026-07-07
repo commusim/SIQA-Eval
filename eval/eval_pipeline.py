@@ -10,11 +10,12 @@ import os
 
 
 def evaluate_SIQA_U(predicted_data, model_name):
-    correct = {"yes/no": 0, "what": 0, "how": 0}
-    total   = {"yes/no": 0, "what": 0, "how": 0}
+    # Keys must match the actual "type" field values in bench_SIQA-U.json
+    correct = {"yes-or-no": 0, "what": 0, "how": 0}
+    total   = {"yes-or-no": 0, "what": 0, "how": 0}
 
     for item in predicted_data:
-        q_type = item.get("type", "")
+        q_type = item.get("type", "").strip().lower()
         if q_type not in total:
             continue
         gt   = item["answer"].strip().upper()
@@ -26,13 +27,12 @@ def evaluate_SIQA_U(predicted_data, model_name):
 
     acc = {t: (correct[t] / total[t] if total[t] > 0 else 0.0) for t in total}
 
-    score_u = (
-        0.2 * acc.get("yes/no", 0)
-        + 0.3 * acc.get("what", 0)
-        + 0.5 * acc.get("how", 0)
-    )
+    # SIQA-U Score: simple mean of per-type accuracy across the three question types
+    valid_acc = [v for t, v in acc.items() if total[t] > 0]
+    score_u   = sum(valid_acc) / len(valid_acc) if valid_acc else 0.0
+
     return {
-        "ACC_yes/no":    acc.get("yes/no", 0),
+        "ACC_yes-or-no": acc.get("yes-or-no", 0),
         "ACC_what":      acc.get("what", 0),
         "ACC_how":       acc.get("how", 0),
         "SIQA_U_Score":  score_u,

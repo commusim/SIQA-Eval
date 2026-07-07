@@ -27,7 +27,7 @@ SIQA evaluates models on two complementary tasks:
 
 | Task | Description | Metric |
 |------|-------------|--------|
-| **SIQA-U** | VQA understanding — yes/no, what, how questions about scientific images | Weighted accuracy (20/30/50 %) |
+| **SIQA-U** | VQA understanding — yes-or-no, what, how questions about scientific images | Mean accuracy across three question types |
 | **SIQA-S** | Quality scoring — predict perceptual & knowledge ratings on a 1–5 scale | SRCC / PLCC (Perception + Knowledge) |
 
 ### SIQA-S Scoring Baselines
