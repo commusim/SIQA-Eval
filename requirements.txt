@@ -1,0 +1,26 @@
+# Core
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.40.0
+Pillow>=9.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+tqdm>=4.65.0
+huggingface_hub>=0.20.0
+
+# SIQA-U / SIQA-S MLLM inference
+# (Model-specific extras; install as needed)
+# accelerate>=0.27.0
+# qwen-vl-utils           # for Qwen2.5-VL / Qwen3-VL
+# flash-attn              # optional, speeds up attention
+
+# NIQE baseline
+pyiqa>=0.1.9
+
+# HyperIQA baseline (no extra pip deps beyond torch/torchvision/PIL)
+
+# CLIP-IQA / CLIP-IQA+ baseline
+# mmcv-full==1.5.0        # install via: mim install mmcv-full==1.5.0
+# openmim                 # install via: pip install openmim
+
+# Q-Align baseline (uses transformers AutoModelForCausalLM, already listed above)

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.env
+.venv/
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude internal
+.claude/
+
+# Model weights (large binary files — download via download_models.sh)
+model/*/
+!model/download_models.sh
+
+# Data images (download via download_data.py)
+data/images/
+data/sft/
+
+# Outputs & results (generated at runtime)
+outputs/*.json
+results/*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
